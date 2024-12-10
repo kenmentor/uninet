@@ -7,22 +7,29 @@ import Searchbox from "@/components/searchbox";
 import { BiCategory } from "react-icons/bi";
 import Loainding from "@/components/Loainding";
 import Erro from "@/components/Erro";
-type resource = {
+
+// Define resource type more precisely
+type ResourceType = {
   title: string;
   views: number;
   description: string;
-  rating: Number;
+  rating: number; // Changed from 'Number' to 'number'
   _id: string;
   thumbnail: string;
 };
-const Page = () => {
-  const [keyword, setKeyword] = useState({
+
+const Page: React.FC = () => {
+  const [keyword, setKeyword] = useState<{
+    searchWord: string;
+    category: string[];
+  }>({
     searchWord: "",
     category: [],
   });
-  const [data, setData] = useState<any>([]);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(true);
+
+  const [data, setData] = useState<ResourceType[]>([]); // Specify the type of data
+  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
 
   // Fetch data from backend when keyword or category changes
   useEffect(() => {
@@ -30,7 +37,7 @@ const Page = () => {
   }, [keyword]);
 
   // Fetch data from the backend API with query params for keyword and category
-  async function fetchData() {
+  const fetchData = async () => {
     try {
       setLoading(true); // Start loading when fetching
       const res = await fetch(
@@ -53,10 +60,10 @@ const Page = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   // Render resources as components
-  const elementResource = data.map((resource: resource, inde: number) => (
+  const elementResource = data.map((resource) => (
     <Resource
       key={resource._id}
       thumbnail={resource.thumbnail}

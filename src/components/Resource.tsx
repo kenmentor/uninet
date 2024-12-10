@@ -1,16 +1,18 @@
 import Link from "next/link";
 import React from "react";
-
 import { BsEye } from "react-icons/bs";
 import Rating from "./Rating";
-type resource = {
-  title: String;
+
+// Define the resource type more clearly
+type ResourceProps = {
+  title: string;
   thumbnail: string;
-  rating: Number;
-  views: Number;
+  rating: number;
+  views: number;
   id: string;
 };
-const Resource = ({ title, thumbnail, rating, views, id }: resource) => {
+
+const Resource = ({ title, thumbnail, rating, views, id }: ResourceProps) => {
   return (
     <Link href={`/${id}/resource-details`}>
       <div className="resourcebox flex flex-col bg-gray-800 rounded-lg overflow-hidden border border-gray-700 shadow-md hover:shadow-lg hover:scale-[1.02] transition-transform duration-300 cursor-pointer">
@@ -36,7 +38,7 @@ const Resource = ({ title, thumbnail, rating, views, id }: resource) => {
               <p className="text-sm">{views}</p>
             </div>
 
-            {/* Stars */}
+            {/* Rating */}
             <Rating rating={rating} />
           </div>
         </div>

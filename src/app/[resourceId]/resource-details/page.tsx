@@ -3,15 +3,13 @@ import Erro from "@/components/Erro";
 import HeaderCostum from "@/components/HeaderCostum";
 import Loainding from "@/components/Loainding";
 import Viewer from "@/components/view";
-import { url } from "inspector";
 import React, { useEffect, useState } from "react";
-import { BiLoader } from "react-icons/bi";
-import { BsDownload } from "react-icons/bs";
+
 type param = {
   resourceId: string;
 };
 function page({ params }: { params: { resourceId: string } }) {
-  const resourceId = React.use(params).resourceId;
+  const { resourceId } = React.use(params);
   const [data, setData] = useState<any>(null);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(true);
