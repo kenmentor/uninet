@@ -3,7 +3,7 @@ import { BiStar } from "react-icons/bi";
 import { BsStarFill, BsStarHalf } from "react-icons/bs";
 
 type RatingProps = {
-  rating: number; // Rating value between 0 and 5
+  rating: Number; // Rating value between 0 and 5
 };
 
 const Rating: React.FC<RatingProps> = ({ rating }) => {

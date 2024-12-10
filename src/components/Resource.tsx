@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { BiStar } from "react-icons/bi";
-import { BsEye, BsStarFill, BsStarHalf } from "react-icons/bs";
+
+import { BsEye } from "react-icons/bs";
 import Rating from "./Rating";
 type resource = {
   title: String;
@@ -37,8 +37,7 @@ const Resource = ({ title, thumbnail, rating, views, id }: resource) => {
             </div>
 
             {/* Stars */}
-            <Rating rating=
-              { rating} />
+            <Rating rating={rating} />
           </div>
         </div>
       </div>
